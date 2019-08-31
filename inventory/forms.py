@@ -1,5 +1,5 @@
 from django import forms
-from .models import Laptops,Desktops,Mobiles
+from .models import Laptops,Desktops,Mobiles,predict
 
 class LaptopForm(forms.ModelForm):
     class Meta:
@@ -17,3 +17,8 @@ class MobileForm(forms.ModelForm):
     class Meta:
         model = Mobiles
         fields = ('type', 'price', 'quantity', 'status')
+
+class Predict(forms.ModelForm):
+    class Meta:
+        model = predict
+        fields = ('type', 'date')
