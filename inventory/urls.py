@@ -17,7 +17,9 @@ urlpatterns = [
 
     path('laptops/delete/(?P<pk>\d+)', views.delete_laptop, name="delete_laptop"),
     path('desktops/delete/(?P<pk>\d+)', views.delete_desktop, name="delete_desktop"),
-    path('mobiles/delete/(?P<pk>\d+)', views.delete_mobile, name="delete_mobile")
+    path('mobiles/delete/(?P<pk>\d+)', views.delete_mobile, name="delete_mobile"),
+
+    path('predict', views.predict, name="predict"),
     
 ]
 
