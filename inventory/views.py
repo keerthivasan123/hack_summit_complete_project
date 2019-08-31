@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Laptops,Desktops,Mobiles
 
-from .forms import LaptopForm,DesktopForm,MobileForm
+from .forms import LaptopForm,DesktopForm,MobileForm,Predict
 
 
 def index(request):
@@ -21,7 +21,6 @@ def index(request):
         items.append(item)
     for item in mobiles:
         items.append(item)
-    print(items)
     context = {
         'items': items,
         'header': 'All',
@@ -30,7 +29,6 @@ def index(request):
 
 def display_laptops(request):
     items = Laptops.objects.all()
-    print(items)
     context = {
         'items': items,
         'header': 'Laptops',
@@ -147,3 +145,19 @@ def delete_mobile(request, pk):
     }
 
     return render(request, template, context)
+
+
+def base_prediction(request, cls):
+    if request.method == "POST":
+        form = cls(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    else:
+        form = cls()
+        return render(request, 'inv/predict.html', {'form' : form})
+
+def predict(request):
+    return base_prediction(request, Predict)
