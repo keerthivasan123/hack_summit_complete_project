@@ -1,6 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -31,3 +32,14 @@ class Laptops(Device):
 
 class Mobiles(Device):
     pass
+
+class predict(models.Model):
+
+    type = models.CharField(max_length=200, blank=False)
+    date = models.DateField(default=date.today)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return 'Type: {0} for date: {1}'.format(self.type, self.date)
