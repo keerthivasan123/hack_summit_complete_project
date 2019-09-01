@@ -37,7 +37,7 @@
             {% for item in laptops %}
             <tr>
                 <td>{{ item.type }}</td>
-                <td>{{ item.price }} $</td>
+                <td>{{ item.price }} Rs</td>
                 <td>{{ item.status }}</td>
               </tr>
             {% endfor %}
@@ -59,7 +59,7 @@
             {% for item in desktops %}
             <tr>
                 <td>{{ item.type }}</td>
-                <td>{{ item.price }} $</td>
+                <td>{{ item.price }} Rs</td>
                 <td>{{ item.status }}</td>
               </tr>
             {% endfor %}
@@ -80,7 +80,7 @@
             {% for item in mobiles %}
             <tr>
                 <td>{{ item.type }}</td>
-                <td>{{ item.price }} $</td>
+                <td>{{ item.price }} Rs</td>
                 <td>{{ item.status }}</td>
             </tr>
             {% endfor %}
@@ -103,7 +103,7 @@
 
             <tr>
               <td>{{ item.type }}</td>
-              <td>{{ item.price }} $</td>
+              <td>{{ item.price }} Rs</td>
               <td>{{ item.status }}</td>
               {% if header|lower == "laptops" %}
               <td>
