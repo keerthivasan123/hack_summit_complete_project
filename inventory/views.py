@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.http import HttpResponseRedirect
 # Create your views here.
 
-from .models import Laptops,Desktops,Mobiles
+from .models import Laptops,Desktops,Mobiles,predict
 
 from .forms import LaptopForm,DesktopForm,MobileForm,Predict
-
+from .ML_Algorithm import prediction
+import itertools
 
 def index(request):
     laptops = Laptops.objects.all()
@@ -147,17 +148,30 @@ def delete_mobile(request, pk):
     return render(request, template, context)
 
 
-def base_prediction(request, cls):
-    if request.method == "POST":
-        form = cls(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-
-    else:
-        form = cls()
-        return render(request, 'inv/predict.html', {'form' : form})
-
-def predict(request):
-    return base_prediction(request, Predict)
+def predict(request):  
+    if request.method == "POST":  
+        form = Predict(request.POST)  
+        type = request.POST['type']
+        post_date = request.POST['date']
+        splited_date=post_date.split('-')
+        list=[]
+        date_list=[]
+        for x in range(10):
+            send_date=''
+            date=int(splited_date[2])+x
+            send_date+=splited_date[0]
+            send_date+='-'
+            send_date+=splited_date[1]
+            send_date+='-'
+            if(date<10):
+                send_date+='0'
+            send_date+= str(date)
+            date_list.append(send_date)
+            list.append(prediction.getPrediction(type, send_date))
+        zipped_list = zip(list,date_list)
+        return render(request, 'inv/predict.html',{"context":zipped_list})
+        
+        
+    else:  
+        form = Predict()  
+    return render(request,'inv/predict.html',{'form':form})
