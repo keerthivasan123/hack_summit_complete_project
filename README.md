@@ -1,9 +1,9 @@
-#INVENTORY MANAGEMENT SOFTWARE
+##INVENTORY MANAGEMENT SOFTWARE
 inventory managament is 
                         *what to produce
 						*when to produce
 						*quantity to produce
-#our work flow
+##our work flow
 the actual sales data set of a industry is trained with machine learning code
 the user is asked to give the date and the product as the input
 the predicted value for the given date is given as the output
