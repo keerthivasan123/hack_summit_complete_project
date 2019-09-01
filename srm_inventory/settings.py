@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inventory',
+    'webpush',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+WEBPUSH_SETTINGS = {
+   "VAPID_PUBLIC_KEY": "your_vapid_public_key",
+   "VAPID_PRIVATE_KEY": "your_vapid_private_key",
+   "VAPID_ADMIN_EMAIL": "keerthivasan287@gmail.com"
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
