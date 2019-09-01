@@ -1,5 +1,6 @@
 from django import forms
 from .models import Laptops,Desktops,Mobiles,predict
+from datetime import date
 
 class LaptopForm(forms.ModelForm):
     class Meta:
@@ -22,3 +23,4 @@ class Predict(forms.ModelForm):
     class Meta:
         model = predict
         fields = ('type', 'date')
+        
