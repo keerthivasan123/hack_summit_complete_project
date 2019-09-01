@@ -169,7 +169,14 @@ def predict(request):
             date_list.append(send_date)
             list.append(prediction.getPrediction(type, send_date))
         zipped_list = zip(list,date_list)
-        return render(request, 'inv/predict.html',{"context":zipped_list})
+        context = {
+        'zipped_list': zipped_list,
+        'list': list,
+        'date': date_list,
+
+        }
+        print(list)
+        return render(request, 'inv/predict.html',context)
         
         
     else:  
